@@ -17,7 +17,7 @@ export class Manager<T> {
     private result: Result<T>,
     valueEquals: Equal<T>,
     private readonly lifecycle: ManagerLifecycle,
-    private readonly debugInfo: DebugInfo
+    private readonly debugInfo: DebugInfo,
   ) {
     this.equals = Result.equal(valueEquals);
   }

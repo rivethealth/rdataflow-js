@@ -45,7 +45,7 @@ export class CalculatedObservable<T> implements StateObservable<T> {
   constructor(
     fn: () => T,
     private readonly debugInfo: DebugInfo,
-    private readonly equals: Equal<T> = Equal.identity()
+    private readonly equals: Equal<T> = Equal.identity(),
   ) {
     this.resultFn = () => Result.run(fn);
   }
@@ -69,7 +69,7 @@ export class CalculatedObservable<T> implements StateObservable<T> {
         this.store.changed();
       },
     },
-    this.debugInfo
+    this.debugInfo,
   );
 
   private dependents: StateDependent[] = [];
@@ -117,7 +117,7 @@ export class CalculatedObservable<T> implements StateObservable<T> {
         this.changed = true;
         if (DebugInfo.ENABLED) {
           console.log(
-            `INVALIDATED\n\t${this.debugInfo.position}\nBY\n\t${debugInfo.position}`
+            `INVALIDATED\n\t${this.debugInfo.position}\nBY\n\t${debugInfo.position}`,
           );
         }
       },
@@ -193,7 +193,7 @@ export class CalculatedObservable<T> implements StateObservable<T> {
 export function calc<T>(
   f: () => T,
   debug = DebugInfo.capture(2),
-  equals?: Equal<T>
+  equals?: Equal<T>,
 ): CalculatedState<T> {
   return new CalculatedState(new CalculatedObservable(f, debug, equals));
 }
@@ -201,14 +201,14 @@ export function calc<T>(
 export function expr<T>(
   f: () => T,
   debug = DebugInfo.capture(2),
-  equals?: Equal<T>
+  equals?: Equal<T>,
 ): T {
   return calc(f, debug, equals).value;
 }
 
 export function flatCalc<T>(
   f: () => State<T>,
-  debug = DebugInfo.capture(2)
+  debug = DebugInfo.capture(2),
 ): CalculatedState<T> {
   const state = calc(f, debug);
   return calc(() => state.value.value, debug);
@@ -219,7 +219,7 @@ export function flatCalc<T>(
  */
 export function autorun(
   fn: () => void,
-  debug = DebugInfo.capture(2)
+  debug = DebugInfo.capture(2),
 ): Reaction {
   return store(
     new CalculatedObservable(() => {
@@ -229,6 +229,6 @@ export function autorun(
         console.error(e);
         throw e;
       }
-    }, debug)
+    }, debug),
   );
 }

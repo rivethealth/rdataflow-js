@@ -45,7 +45,7 @@ xdescribe("stateToRx", () => {
     const writeable = WriteableState.value(0);
     const rx = stateToRx(writeable).pipe(
       debounceTime(0),
-      tap((a) => console.log("VALUE: ", a))
+      tap((a) => console.log("VALUE: ", a)),
     );
 
     const fn = jest.fn();

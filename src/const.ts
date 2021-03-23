@@ -20,7 +20,7 @@ export class ConstStateObservable<T> implements StateObservable<T> {
         deactivate: () => {},
         change: () => {},
       },
-      this.debugInfo
+      this.debugInfo,
     );
   }
 
@@ -40,13 +40,13 @@ export class ConstStateObservable<T> implements StateObservable<T> {
 export function constError(error: any): ConstState<never> {
   const debugInfo = DebugInfo.capture(1);
   return new ConstState(
-    new ConstStateObservable(new Result.Error(error), debugInfo)
+    new ConstStateObservable(new Result.Error(error), debugInfo),
   );
 }
 
 export function constValue<T>(value: T): ConstState<T> {
   const debugInfo = DebugInfo.capture(1);
   return new ConstState(
-    new ConstStateObservable(new Result.Value(value), debugInfo)
+    new ConstStateObservable(new Result.Value(value), debugInfo),
   );
 }

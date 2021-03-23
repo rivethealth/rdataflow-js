@@ -39,8 +39,8 @@ export class WriteableState<T> extends State<T> {
       new WriteableObservable(
         new Result.Error(error),
         equals,
-        DebugInfo.capture(2)
-      )
+        DebugInfo.capture(2),
+      ),
     );
   }
 
@@ -49,8 +49,8 @@ export class WriteableState<T> extends State<T> {
       new WriteableObservable(
         new Result.Value(value),
         equals,
-        DebugInfo.capture(2)
-      )
+        DebugInfo.capture(2),
+      ),
     );
   }
 }
@@ -62,7 +62,7 @@ export class WriteableObservable<T> implements StateObservable<T> {
   constructor(
     initial: Result<T>,
     private readonly equals: Equal<T>,
-    private readonly debugInfo: DebugInfo
+    private readonly debugInfo: DebugInfo,
   ) {
     this.store = new Manager(
       initial,
@@ -80,7 +80,7 @@ export class WriteableObservable<T> implements StateObservable<T> {
           this.dirty = false;
         },
       },
-      this.debugInfo
+      this.debugInfo,
     );
   }
 

@@ -27,11 +27,11 @@ export namespace Equal {
   export function object<T>(
     properties: {
       [K in keyof T]?: Equal<T[K]>;
-    }
+    },
   ): Equal<T> {
     return (a: T, b: T) => {
       return Object.entries(properties).every(([key, equal]: [any, any]) =>
-        equal(a[<keyof T>key], b[<keyof T>key])
+        equal(a[<keyof T>key], b[<keyof T>key]),
       );
     };
   }

@@ -13,7 +13,7 @@ interface CachedState<A, B> {
  */
 export function arrayMap<A, B, K>(
   fn: (a: State<A>, index: State<number>, key: K) => State<B>,
-  keyFn: (a: A) => K = (a: A) => <K>(<unknown>a)
+  keyFn: (a: A) => K = (a: A) => <K>(<unknown>a),
 ): (a: State<A[]>) => State<B[]> {
   return (array) => {
     let cache = new Map<K, CachedState<A, B>>();

@@ -12,8 +12,8 @@ describe("arrayMap", () => {
         calc(() => {
           fn();
           return n.value + 1;
-        })
-      )
+        }),
+      ),
     );
 
     let value: number[];

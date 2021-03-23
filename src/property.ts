@@ -15,7 +15,7 @@ namespace Property {
 class ChainedProperty<T> implements Property<T> {
   constructor(
     private readonly first: Property<any>,
-    private readonly second: Property<T>
+    private readonly second: Property<T>,
   ) {}
 
   get(target: Object) {
@@ -26,7 +26,7 @@ class ChainedProperty<T> implements Property<T> {
 class ObjectProperty<T> implements Property<T> {
   constructor(
     private readonly key: string | symbol,
-    private readonly create: () => T
+    private readonly create: () => T,
   ) {}
 
   get(target: Object): T {
@@ -47,7 +47,7 @@ interface StateInfo {
 
 const STATE_INFO_PROPERTY = new ObjectProperty<StateInfo>(
   Symbol("STATE_INFO"),
-  () => ({})
+  () => ({}),
 );
 
 export class InvalidPropertyError extends Error {
@@ -65,7 +65,7 @@ export function calculated<T>(equals?: Equal<T>) {
 
     const getter = initial.get;
     const keyProperty = new ObjectProperty(key, () =>
-      calc<T>(getter, undefined, equals)
+      calc<T>(getter, undefined, equals),
     );
 
     const property = Property.chain(STATE_INFO_PROPERTY, keyProperty);
@@ -84,7 +84,7 @@ export function observable<T>(equals?: Equal<T>) {
 
     const value = initial && initial.value;
     const keyProperty = new ObjectProperty(key, () =>
-      WriteableState.value<T>(value, equals)
+      WriteableState.value<T>(value, equals),
     );
 
     const property = Property.chain(STATE_INFO_PROPERTY, keyProperty);

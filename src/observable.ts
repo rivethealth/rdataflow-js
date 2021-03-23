@@ -18,7 +18,7 @@ export class UnobservedError extends Error {
 }
 
 const UNOBSERVED_RESULT: Result<never> = new Result.Error(
-  new UnobservedError()
+  new UnobservedError(),
 );
 
 const INITIAL_RESULT: Result<undefined> = new Result.Value(undefined);
@@ -39,7 +39,7 @@ export class ObservableState<T> extends State<T | undefined> {
 class RxObservableObservable<T> implements StateObservable<T | undefined> {
   constructor(
     private readonly observable: RxObservable<T>,
-    private readonly debugInfo: DebugInfo
+    private readonly debugInfo: DebugInfo,
   ) {}
 
   private dirty = false;
@@ -69,7 +69,7 @@ class RxObservableObservable<T> implements StateObservable<T | undefined> {
         }
       },
     },
-    this.debugInfo
+    this.debugInfo,
   );
   private subscription_: RxUnsubscribable | undefined;
 
@@ -167,7 +167,7 @@ export function stateToRx<T>(state: State<T>): RxObservable<T> {
  * Convert RxJS Observable to StateObservable
  */
 export function rxToState<T>(
-  observable: RxObservable<T>
+  observable: RxObservable<T>,
 ): State<T | undefined> {
   const debugInfo = DebugInfo.capture(2);
   return new ObservableState(new RxObservableObservable(observable, debugInfo));
