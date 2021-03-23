@@ -13,8 +13,7 @@ npm add rdataflow
 ## Basic example
 
 ```js
-import { calc } from "rdataflow/calc";
-import { storeState } from "rdataflow/store";
+import { autorun, calc } from "rdataflow/calc";
 import { WriteableState } from "rdataflow/write";
 
 const redApples = WriteableState.value(5);
@@ -37,7 +36,9 @@ const fruit = calc(() => {
   return sum;
 });
 
-const store = storeState(output);
+const run = autorun(() => {
+  fruit.value;
+});
 // 5 red apples + 0 green apples = 5 apples
 // 5 apples + 10 oranges = 15 fruit
 
@@ -48,7 +49,7 @@ greenApples.setValue(10);
 oranges.setValue(6);
 // 10 apples + 6 oranges = 16 fruit
 
-store.dispose();
+run.dispose();
 ```
 
 ## Features
