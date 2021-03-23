@@ -1,0 +1,6 @@
+*.log
+
+target/
+node_modules
+
+/lib/

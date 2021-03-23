@@ -1,0 +1,25 @@
+{
+  "bugs": {
+    "url": "https://github.com/rivethealth/rdataflow-js/issues"
+  },
+  "dependencies": {
+    "rxjs": "^6.0.0"
+  },
+  "description": "Library for assembling computational processes",
+  "devDependencies": {
+    "@types/jest": "~22.2.0",
+    "jest": "~26.6.3",
+    "prettier": "~2.2.1",
+    "ts-jest": "~26.5.0",
+    "typescript": "~4.2.0"
+  },
+  "homepage": "https://github.com/rivethealth/rdataflow-js",
+  "license": "MIT",
+  "name": "rdataflow",
+  "author": {
+    "email": "ops@rivethealth.com",
+    "name": "Rivet",
+    "url": "https://rivethealth.com"
+  },
+  "version": "1.0.0"
+}
