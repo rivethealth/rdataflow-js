@@ -25,7 +25,7 @@ package: target/package.tgz
 
 .PHONY: publish
 publish: target/package.tgz
-	npm publish --access $<
+	npm publish ./$<
 
 target/package.tgz: package.json target/lib.target
 	rm -fr target/package
