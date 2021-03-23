@@ -1,4 +1,6 @@
-# Rdataflow.js
+# Rdataflow
+
+![npm](https://img.shields.io/npm/v/rdataflow)
 
 Rdataflow is a JavaScript library for assembling computational processes.
 
