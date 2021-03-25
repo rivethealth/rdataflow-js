@@ -1,4 +1,9 @@
 {
+  "author": {
+    "email": "ops@rivethealth.com",
+    "name": "Rivet",
+    "url": "https://rivethealth.com"
+  },
   "bugs": {
     "url": "https://github.com/rivethealth/rdataflow-js/issues"
   },
@@ -14,12 +19,9 @@
     "typescript": "~4.2.0"
   },
   "homepage": "https://github.com/rivethealth/rdataflow-js",
+  "keywords": ["dataflow"],
   "license": "MIT",
   "name": "rdataflow",
-  "author": {
-    "email": "ops@rivethealth.com",
-    "name": "Rivet",
-    "url": "https://rivethealth.com"
-  },
+  "repository": "rivethealth/rdataflow-js",
   "version": "1.0.2"
 }

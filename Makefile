@@ -27,9 +27,10 @@ package: target/package.tgz
 publish: target/package.tgz
 	npm publish ./$<
 
-target/package.tgz: package.json target/lib.target
+target/package.tgz: package.json README.md LICENSE.txt target/lib.target
 	rm -fr target/package
 	mkdir target/package
+	cp README.md LICENSE.txt target/package
 	rsync -r --exclude='*.spec.js' --exclude='*.spec.js.map' src/ target/package/src/
 	rsync -r --exclude='*.spec.js' --exclude='*.spec.js.map' lib/ target/package/
 	cp package.json target/package
