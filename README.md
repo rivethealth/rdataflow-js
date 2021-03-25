@@ -45,7 +45,7 @@ const run = autorun(() => {
 // 5 apples + 10 oranges = 15 fruit
 
 greenApples.setValue(10);
-// 5 red apples + 5 gree apples = 10 apples
+// 5 red apples + 5 green apples = 10 apples
 // 10 apples + 10 oranges = 20 fruit
 
 oranges.setValue(6);
@@ -71,8 +71,30 @@ the calculation function itself.
 
 ### Transaction
 
-Changes are applied transactionally, prevent unnecessary or inconsistent
-calculations. If a transaction does not exist, it is created automatically.
+Changes happen in transactions, which prevent unnecessary or inconsistent
+calculations. `runAction()` runs the callback in a transaction.
+
+```js
+import { autorun } from "rdataflow/calc";
+import { runAction } from "rdataflow/transaction";
+import { WriteableState } from "rdataflow/write";
+
+const a = WriteableState.value(0);
+const b = WriteableState.value(0);
+
+const run = autorun(() => console.log(a.value + b.value));
+// 0
+
+runAction(() => {
+  a.setValue(1);
+  b.setValue(2);
+});
+// 3
+
+run.dispose();
+```
+
+If a transaction does not already exist, it is created automatically.
 
 ### Observables
 
