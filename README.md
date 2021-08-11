@@ -2,6 +2,10 @@
 
 ![npm](https://img.shields.io/npm/v/rdataflow)
 
+<p align="center">
+  <img src="doc/logo.png">
+</p>
+
 Rdataflow is a JavaScript library for assembling computational processes.
 
 It's like a spreadsheet calculator for your code.
